@@ -1,0 +1,6 @@
+@CleanArch_recomend_sistem_api_HostAddress = http://localhost:5259
+
+GET {{CleanArch_recomend_sistem_api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
