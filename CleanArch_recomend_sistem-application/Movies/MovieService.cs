@@ -3,14 +3,14 @@ using CleanArch_recomend_sistem.Core.Entities;
 
 namespace CleanArch_recomend_sistem.application.Movies;
 
-internal class MovieService(IRepository<MovieService> repository) : IService
+public class MovieService(IRepository<Movie> repository) : IService
 {
-    private IRepository<MovieService> Repository { get; init; } = repository;
+    private IRepository<Movie> Repository { get; init; } = repository;
 
-    public Task<IEnumerable<MovieService>> GetUserServiceAsync(CancellationToken cancellationToken = default) =>
+    public Task<IEnumerable<Movie>> GetUserServiceAsync(CancellationToken cancellationToken = default) =>
         Repository.Get(cancellationToken);
 
-    public async Task RegisterOrUpdateMoviesAsync(IEnumerable<MovieService> movies, CancellationToken cancellationToken = default)
+    public async Task RegisterOrUpdateMoviesAsync(IEnumerable<Movie> movies, CancellationToken cancellationToken = default)
     {
         var newMovies = from movie in movies
                         where movie.Id is null
