@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using CleanArch_recomend_sistem.application.Users;
 using CleanArch_recomend_sistem.Core.DTOs;
 
@@ -10,8 +9,8 @@ public static class UserEndpoint
 
     public static void MapProjectEndpoints(this IEndpointRouteBuilder routes)
     {
-        routes.MapGet("/users", GetUsers);
-        routes.MapPost("/users/", AddUser);
+        routes.MapGet("/users", GetUser);
+        routes.MapPost("/users/", AddOrUpdateUser);
     }
 
     private static async Task<IResult> GetUser(UserService service, CancellationToken cancellationToken)
@@ -30,7 +29,7 @@ public static class UserEndpoint
     {
         try
         {
-            await service.RegisterOrUpdateUsersAsync(cancellationToken);
+            await service.RegisterOrUpdateUsersAsync(userDTO, cancellationToken);
             return Results.Ok();
             
         }

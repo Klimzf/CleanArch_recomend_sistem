@@ -1,38 +1,35 @@
 ﻿
 namespace CleanArch_recomend_sistem.application.Users;
 
-internal class MovieService(IRepository<MovieService> repository) : IService
+public class UserService(IRepository<User> repository) : IService
 {
-    private IRepository<MovieService> Repository { get; init; } = repository;
+    private IRepository<User> Repository { get; init; } = repository;
 
-    public Task<IEnumerable<MovieService>> GetUserServiceAsync(CancellationToken cancellationToken = default) =>
+    public Task<IEnumerable<User>> GetUserServiceAsync(CancellationToken cancellationToken = default) =>
         Repository.Get(cancellationToken);
 
-    public async Task RegisterOrUpdateUsersAsync(IEnumerable<MovieService> users, CancellationToken cancellationToken = default)
+    public async Task RegisterOrUpdateUsersAsync(UserDTO user, CancellationToken cancellationToken = default)
     {
-        var newUsers = from user in users
-                         where user.Id is null
-                         select new User()
-                         {
-                             Email = user.Email,
-                             Number = user.Number,
-                             Name = user.Name,
-                         };
-
-        var repo = await Repository.Get(cancellationToken);
-        var newOldUserCouples = from user in (from user in users where user.Id is not null select user)
-                                  join repUser in repo on user.Id equals repUser.Id
-                                  select (user, repUser);
-
-        foreach (var (updatedUser, oldUser) in newOldUserCouples)
+        User localProj;
+        if (user.Id is not null)
         {
-            oldUser.Name = updatedUser.Name;
-            oldUser.Email = updatedUser.Email;
-            oldUser.Number = updatedUser.Number;
+            localProj = (await Repository.Get(x => x.Id.Value == user.Id.Value, cancellationToken)).FirstOrDefault() ??
+                throw new Core.Exceptions.UserNotFoundException(user.Id.Value);
+            localProj.Name = user.Name;
+            localProj.Email = user.Email;
+            localProj.Number = user.Number;
         }
+        else
+            localProj = new()
+            {
+                Name = user.Name,
+                Email = user.Email,
+                Number = user.Number,
+            };
 
-        // todo: validation object
-        await Repository.AddRange(newUsers, cancellationToken);
-        await Repository.UpdateRange(repo, cancellationToken);
+        if (localProj.Id is null)
+            await Repository.Add(localProj, cancellationToken);
+        else
+            await Repository.Update(localProj, cancellationToken);
     }
 }
