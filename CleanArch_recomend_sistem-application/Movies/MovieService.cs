@@ -10,31 +10,28 @@ public class MovieService(IRepository<Movie> repository) : IService
     public Task<IEnumerable<Movie>> GetUserServiceAsync(CancellationToken cancellationToken = default) =>
         Repository.Get(cancellationToken);
 
-    public async Task RegisterOrUpdateMoviesAsync(IEnumerable<Movie> movies, CancellationToken cancellationToken = default)
+    /*public async Task RegisterOrUpdateMoviesAsync(MovieDTO movie, CancellationToken cancellationToken = default)
     {
-        var newMovies = from movie in movies
-                        where movie.Id is null
-                         select new Movie()
-                         {
-                             Title = movie.Title,
-                             Genre = movie.Genre,
-                             Rating = movie.Rating,
-                         };
-
-        var repo = await Repository.Get(cancellationToken);
-        var newOldMovieCouples = from movie in (from movie in movies where movie.Id is not null select movie)
-                                  join repMovie in repo on movie.Id equals repMovie.Id
-                                  select (movie, repMovie);
-
-        foreach (var (updatedMovie, oldMovie) in newOldMovieCouples)
+        User localProj;
+        if (movie.Id is not null)
         {
-            oldMovie.Title = updatedMovie.Title;
-            oldMovie.Genre = updatedMovie.Genre;
-            oldMovie.Rating = updatedMovie.Rating;
+            localProj = (await Repository.Get(x => x.Id.Value == movie.Id.Value, cancellationToken)).FirstOrDefault() ??
+                throw new Core.Exceptions.MovieNotFoundException(movie.Id.Value);
+            localProj.Title = movie.Name;
+            localProj.Email = user.Email;
+            localProj.Number = user.Number;
         }
+        else
+            localProj = new()
+            {
+                Name = user.Name,
+                Email = user.Email,
+                Number = user.Number,
+            };
 
-        // todo: validation object
-        await Repository.AddRange(newMovies, cancellationToken);
-        await Repository.UpdateRange(repo, cancellationToken);
-    }
+        if (localProj.Id is null)
+            await Repository.Add(localProj, cancellationToken);
+        else
+            await Repository.Update(localProj, cancellationToken);
+    }*/
 }

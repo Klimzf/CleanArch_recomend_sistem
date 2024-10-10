@@ -8,9 +8,37 @@ namespace CleanArch_recomend_sistem.Infrastructure.Db;
 public class BasicRepository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity, new()
 {
     private static readonly ProjectContext _context = new();
-    public Task AddRange(IEnumerable<TEntity> entities, CancellationToken cancellationToken) =>
-        _context.AddRangeAsync(entities, cancellationToken);
 
+    public Task AddRange(IEnumerable<TEntity> entities, CancellationToken cancellationToken) =>
+         Task.Run(async () =>
+         {
+             _context.AddRange(entities);
+             try
+             {
+                 await _context.SaveChangesAsync(cancellationToken);
+             }
+             catch (DbUpdateException ex)
+             {
+                 // Получите подробное сообщение
+                 var innerException = ex.InnerException?.Message;
+                 Console.WriteLine($"Ошибка при обновлении базы данных: {innerException}");
+             }
+         }, cancellationToken);
+    public Task Add(TEntity entity, CancellationToken cancellationToken)=>
+        Task.Run(async () =>
+        {
+            _context.AddRange(entity);
+            try
+            {
+                await _context.SaveChangesAsync(cancellationToken);
+            }
+            catch (DbUpdateException ex)
+            {
+                // Получите подробное сообщение
+                var innerException = ex.InnerException?.Message;
+                Console.WriteLine($"Ошибка при обновлении базы данных: {innerException}");
+            }
+        }, cancellationToken);
     public Task<IEnumerable<TEntity>> Get(CancellationToken cancellationToken) =>
         Task.FromResult(_context.Set<TEntity>().ToArray().AsEnumerable());
 
