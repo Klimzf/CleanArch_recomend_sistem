@@ -7,5 +7,7 @@ namespace CleanArch_recomend_sistem.Core.Entities
         public string Title { get; set; }
         public string Genre { get; set; }
         public double Rating { get; set; }
+
+        public virtual ICollection<UserMovieRating> MovieRatings { get; set; }
     }
 }

@@ -1,10 +1,17 @@
 ﻿
 namespace CleanArch_recomend_sistem.Core.Entities
 {
-    public class UserMovieRating
+    public class UserMovieRating: IEntity
     {
-        public int UserId { get; set; }
-        public int MovieId { get; set; }
-        public double Rating { get; set; }
+        public Id Id { get; set; } 
+
+        public Id UserId { get; set; } 
+        public virtual User User { get; set; } 
+
+        public Id MovieId { get; set; } 
+        public virtual Movie Movie { get; set; } 
+
+        public int Rating { get; set; }
+
     }
 }
