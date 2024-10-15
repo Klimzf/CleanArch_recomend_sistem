@@ -4,6 +4,7 @@ using CleanArch_recomend_sistem.Infrastructure.Db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CleanArch_recomend_sistem_infrastructure.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    partial class ProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20241015093715_AddDataForTable")]
+    partial class AddDataForTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,217 +53,217 @@ namespace CleanArch_recomend_sistem_infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("81af2713-99e0-4fae-9753-6a21a1551f4c"),
+                            Id = new Guid("e45bcc5a-2afa-47bb-884d-fdb38a0c2a57"),
                             Genre = "Sci-Fi",
                             Rating = 8.6999999999999993,
                             Title = "The Matrix"
                         },
                         new
                         {
-                            Id = new Guid("f316589f-bc7f-4679-ba53-3d36e3fa6284"),
+                            Id = new Guid("91bc230d-7f9f-4220-a15e-17119c589107"),
                             Genre = "Sci-Fi",
                             Rating = 8.8000000000000007,
                             Title = "Inception"
                         },
                         new
                         {
-                            Id = new Guid("b38a977d-34d3-476e-b536-3ad54930d0f4"),
+                            Id = new Guid("a4aee975-d877-4799-8728-b560274f4c98"),
                             Genre = "Sci-Fi",
                             Rating = 8.5999999999999996,
                             Title = "Interstellar"
                         },
                         new
                         {
-                            Id = new Guid("e44a59cc-66da-4db8-a091-13f78097e770"),
+                            Id = new Guid("db330b5b-2b53-43fa-84a5-fdb7e2bcf929"),
                             Genre = "Action",
                             Rating = 9.0,
                             Title = "The Dark Knight"
                         },
                         new
                         {
-                            Id = new Guid("8c74be2e-53dd-4b04-8382-d668c5ea2d82"),
+                            Id = new Guid("1730ceae-ab41-4cd6-9f1d-29ae0b2b73e6"),
                             Genre = "Drama",
                             Rating = 8.8000000000000007,
                             Title = "Fight Club"
                         },
                         new
                         {
-                            Id = new Guid("b973900e-dd9c-4b7d-99d3-61c5686af85e"),
+                            Id = new Guid("a959652d-564b-4efe-bf93-ec33f6df1c31"),
                             Genre = "Crime",
                             Rating = 8.9000000000000004,
                             Title = "Pulp Fiction"
                         },
                         new
                         {
-                            Id = new Guid("e2d8ffde-ede7-4573-af8f-ce7f87ee5826"),
+                            Id = new Guid("d8eea35a-c2e3-4d93-86ff-b60e69d3d332"),
                             Genre = "Drama",
                             Rating = 8.8000000000000007,
                             Title = "Forrest Gump"
                         },
                         new
                         {
-                            Id = new Guid("df7033da-e358-4cf1-9c0f-754c6dab99f0"),
+                            Id = new Guid("1d7d3eef-c4e9-47e5-82ff-00c6fc63ce85"),
                             Genre = "Drama",
                             Rating = 9.3000000000000007,
                             Title = "The Shawshank Redemption"
                         },
                         new
                         {
-                            Id = new Guid("9dca1c0f-4057-4fdf-8dcf-5beecb8f8818"),
+                            Id = new Guid("f5c55b4f-f1be-4f6e-81f0-56cfcfab3d5f"),
                             Genre = "Crime",
                             Rating = 9.1999999999999993,
                             Title = "The Godfather"
                         },
                         new
                         {
-                            Id = new Guid("096b52e8-40a3-4db1-aceb-c5a9a47372fc"),
+                            Id = new Guid("d12fd5a1-df07-460e-900c-da1abe59b4ea"),
                             Genre = "Crime",
                             Rating = 9.0,
                             Title = "The Godfather: Part II"
                         },
                         new
                         {
-                            Id = new Guid("4f61dabf-c48f-42b0-87c2-c7e156da99dd"),
+                            Id = new Guid("e87e4ffe-4d2b-4367-be68-23d02d878033"),
                             Genre = "Fantasy",
                             Rating = 8.8000000000000007,
                             Title = "The Lord of the Rings: The Fellowship of the Ring"
                         },
                         new
                         {
-                            Id = new Guid("88e36e5a-5a07-4f19-9965-d257f21281db"),
+                            Id = new Guid("9616f9a6-a801-4b50-a3ea-ed74e1cdade3"),
                             Genre = "Fantasy",
                             Rating = 8.6999999999999993,
                             Title = "The Lord of the Rings: The Two Towers"
                         },
                         new
                         {
-                            Id = new Guid("84d17129-2a9c-418d-86ea-50c5c48bdd27"),
+                            Id = new Guid("0530928a-68c5-4410-b2ba-6550fa312512"),
                             Genre = "Fantasy",
                             Rating = 9.0,
                             Title = "The Lord of the Rings: The Return of the King"
                         },
                         new
                         {
-                            Id = new Guid("29348f3c-b07a-42e3-a759-dc90c89b951e"),
+                            Id = new Guid("aad436f8-c7d2-48d6-a2da-0b5ed1e32741"),
                             Genre = "Sci-Fi",
                             Rating = 8.5999999999999996,
                             Title = "Star Wars: A New Hope"
                         },
                         new
                         {
-                            Id = new Guid("ed54fc43-61de-448f-bc08-74d0bc7a7beb"),
+                            Id = new Guid("83787952-14c5-4976-b36a-b4215ac3a58a"),
                             Genre = "Sci-Fi",
                             Rating = 8.6999999999999993,
                             Title = "Star Wars: The Empire Strikes Back"
                         },
                         new
                         {
-                            Id = new Guid("2f2b8b08-3d27-4758-a150-dd2149d001f2"),
+                            Id = new Guid("854bced5-98d0-4869-98b7-d28d52679f76"),
                             Genre = "Sci-Fi",
                             Rating = 8.3000000000000007,
                             Title = "Star Wars: Return of the Jedi"
                         },
                         new
                         {
-                            Id = new Guid("b1802739-6e31-40f0-a288-ee9c629eed47"),
+                            Id = new Guid("85c7c161-7753-40e0-876d-35b1cd0c5cbd"),
                             Genre = "Thriller",
                             Rating = 8.5999999999999996,
                             Title = "The Silence of the Lambs"
                         },
                         new
                         {
-                            Id = new Guid("295aecfc-3586-4646-af32-5f1985f26479"),
+                            Id = new Guid("f7adf664-c93a-4e45-987a-671ccd115e8a"),
                             Genre = "History",
                             Rating = 9.0,
                             Title = "Schindler's List"
                         },
                         new
                         {
-                            Id = new Guid("01a1a232-4928-40b7-9372-6f6d14a5976c"),
+                            Id = new Guid("360c5381-c7d6-4dc0-8f2c-2de66fb18c7e"),
                             Genre = "Action",
                             Rating = 8.5,
                             Title = "Gladiator"
                         },
                         new
                         {
-                            Id = new Guid("3babea32-807d-41ef-afe7-c5a118921c1e"),
+                            Id = new Guid("7a04e74d-34e9-4852-b410-610d8fe3254e"),
                             Genre = "Action",
                             Rating = 8.3000000000000007,
                             Title = "Braveheart"
                         },
                         new
                         {
-                            Id = new Guid("9470cb5d-f7e5-4463-8909-7904479e06cc"),
+                            Id = new Guid("ee86f00e-3a57-4c51-91ff-12f4cee5d794"),
                             Genre = "Romance",
                             Rating = 7.9000000000000004,
                             Title = "Titanic"
                         },
                         new
                         {
-                            Id = new Guid("6f2caf58-e68e-43f8-92bb-36e97193ea96"),
+                            Id = new Guid("1831a3d4-e9d9-4426-b0ab-411f6dd36930"),
                             Genre = "Sci-Fi",
                             Rating = 7.7999999999999998,
                             Title = "Avatar"
                         },
                         new
                         {
-                            Id = new Guid("1cdd04d6-7aee-4a61-8844-64c515247291"),
+                            Id = new Guid("c5928c96-1835-4ab0-a72d-f9c713cc3d7d"),
                             Genre = "Action",
                             Rating = 8.0,
                             Title = "The Avengers"
                         },
                         new
                         {
-                            Id = new Guid("ac11842e-0da8-4062-a160-53f360ff165c"),
+                            Id = new Guid("3e298f3b-6cce-43ed-b974-9c50a341bf2a"),
                             Genre = "Action",
                             Rating = 8.4000000000000004,
                             Title = "Avengers: Endgame"
                         },
                         new
                         {
-                            Id = new Guid("44e946f4-71c8-486f-a6ba-c262152c704b"),
+                            Id = new Guid("4fa59ada-2807-4efc-96e1-e3dc3238d6b8"),
                             Genre = "Action",
                             Rating = 8.0999999999999996,
                             Title = "Guardians of the Galaxy"
                         },
                         new
                         {
-                            Id = new Guid("f5b3bac2-8043-47a9-8088-8f59870da2dd"),
+                            Id = new Guid("32264b01-4c41-4e4f-859a-22d49f4b6f10"),
                             Genre = "Animation",
                             Rating = 8.4000000000000004,
                             Title = "Spider-Man: Into the Spider-Verse"
                         },
                         new
                         {
-                            Id = new Guid("cfcdd117-e862-4a02-a234-bf10fa088a2c"),
+                            Id = new Guid("f405fdc4-0f6b-46c6-bb28-3f1db3df08e6"),
                             Genre = "Animation",
                             Rating = 8.5,
                             Title = "The Lion King"
                         },
                         new
                         {
-                            Id = new Guid("ac920fde-1611-4877-aba9-852154c5645c"),
+                            Id = new Guid("8c03ab67-163b-4e9f-84c7-1d7f38f3e275"),
                             Genre = "Animation",
                             Rating = 7.4000000000000004,
                             Title = "Frozen"
                         },
                         new
                         {
-                            Id = new Guid("91b25944-3002-4481-8b8f-bbeb02a99953"),
+                            Id = new Guid("e75e0679-8fa4-4dca-a18e-b66727bb9f45"),
                             Genre = "Animation",
                             Rating = 8.3000000000000007,
                             Title = "Toy Story"
                         },
                         new
                         {
-                            Id = new Guid("43a9f7b5-5ec4-4def-aac6-1e8ce2ddab2e"),
+                            Id = new Guid("88931daf-c327-487f-8777-ba81bc8dd3cc"),
                             Genre = "Animation",
                             Rating = 8.3000000000000007,
                             Title = "Toy Story 3"
                         },
                         new
                         {
-                            Id = new Guid("6c23bc92-8b90-4f64-867a-b671048375d8"),
+                            Id = new Guid("45e060b9-ec4b-47aa-8215-cc5ec62ce777"),
                             Genre = "Animation",
                             Rating = 8.0999999999999996,
                             Title = "Finding Nemo"
@@ -293,70 +296,70 @@ namespace CleanArch_recomend_sistem_infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("be411900-f838-4bf8-afa1-cae366a9e951"),
+                            Id = new Guid("ae816912-7d24-48ef-9a33-62509561d981"),
                             Email = "johndoe@example.com",
                             Name = "John Doe",
                             Number = "123456789"
                         },
                         new
                         {
-                            Id = new Guid("015e72fc-e904-4557-9bb9-6360bdce5acd"),
+                            Id = new Guid("badd9a9d-e35c-47c3-b9fd-6821c2fe8587"),
                             Email = "janesmith@example.com",
                             Name = "Jane Smith",
                             Number = "987654321"
                         },
                         new
                         {
-                            Id = new Guid("759e4dc3-f08a-404a-a14d-c1bee33b0e7d"),
+                            Id = new Guid("93f4142c-8732-4d12-8518-48de933dc064"),
                             Email = "robertbrown@example.com",
                             Name = "Robert Brown",
                             Number = "456789123"
                         },
                         new
                         {
-                            Id = new Guid("66d3e8b5-fe70-45e2-bed9-464921dbccf9"),
+                            Id = new Guid("2fddc036-e338-4139-bf45-5329aa20db84"),
                             Email = "alicejohnson@example.com",
                             Name = "Alice Johnson",
                             Number = "789123456"
                         },
                         new
                         {
-                            Id = new Guid("5d698d95-c47b-4cd0-99ee-0f652ae9b829"),
+                            Id = new Guid("9bfd9e1e-9a3e-46a3-99e4-ffd9d7e88391"),
                             Email = "davidclark@example.com",
                             Name = "David Clark",
                             Number = "321654987"
                         },
                         new
                         {
-                            Id = new Guid("8b27c92a-67b5-45ec-ae1c-fa8e6b680688"),
+                            Id = new Guid("fd42ecec-67d6-4f05-9187-346ddc438476"),
                             Email = "emma@example.com",
                             Name = "Emma Harris",
                             Number = "654987321"
                         },
                         new
                         {
-                            Id = new Guid("b099e4a4-665b-496c-b473-cbda2b92eeb9"),
+                            Id = new Guid("d4b6b683-49d5-4eed-801d-68154243d3e2"),
                             Email = "michael@example.com",
                             Name = "Michael Adams",
                             Number = "135792468"
                         },
                         new
                         {
-                            Id = new Guid("ef04f83f-a198-4bda-a50e-60200a2099b2"),
+                            Id = new Guid("0d655e31-e2fc-4962-a392-b5b1a41cdd01"),
                             Email = "sophia@example.com",
                             Name = "Sophia Baker",
                             Number = "246813579"
                         },
                         new
                         {
-                            Id = new Guid("4fd07cb4-df47-4e5a-9da0-5996dad407c7"),
+                            Id = new Guid("39706cf4-c4bf-4a3b-bb35-09bc7868f1db"),
                             Email = "william@example.com",
                             Name = "William Scott",
                             Number = "159753486"
                         },
                         new
                         {
-                            Id = new Guid("117e8b47-b4fd-487a-bb5e-c221be4eecd6"),
+                            Id = new Guid("29080d93-b401-4101-a368-54d6ab5096c2"),
                             Email = "olivia@example.com",
                             Name = "Olivia Wilson",
                             Number = "357951486"
