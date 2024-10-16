@@ -16,9 +16,11 @@ namespace CleanArch_recomend_sistem.Infrastructure.Db
                 .HaveConversion<IdConverter>();
             base.ConfigureConventions(configurationBuilder);
         }
+
         public DbSet<User> User { get; set; }
         public DbSet<Movie> Movie { get; set; }
         public DbSet<UserMovieRating> UserMovieRating { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var entityTypes = typeof(IEntity).Assembly
@@ -30,16 +32,15 @@ namespace CleanArch_recomend_sistem.Infrastructure.Db
                             .Property(nameof(IEntity.Id))
                             .HasDefaultValueSql("NEWSEQUENTIALID()");
 
-                modelBuilder.Entity<UserMovieRating>()
-                    .HasOne(umr => umr.User)
-                    .WithMany(u => u.MovieRatings)
-                    .HasForeignKey(umr => umr.UserId);
+            modelBuilder.Entity<UserMovieRating>()
+                .HasOne(umr => umr.User)
+                .WithMany(u => u.MovieRatings)
+                .HasForeignKey(umr => umr.UserId);
 
-                modelBuilder.Entity<UserMovieRating>()
-                    .HasOne(umr => umr.Movie)
-                    .WithMany(m => m.MovieRatings)
-                    .HasForeignKey(umr => umr.MovieId);
-
+            modelBuilder.Entity<UserMovieRating>()
+                .HasOne(umr => umr.Movie)
+                .WithMany(m => m.MovieRatings)
+                .HasForeignKey(umr => umr.MovieId);
 
             // Seed Users
             modelBuilder.Entity<User>().HasData(
@@ -89,6 +90,36 @@ namespace CleanArch_recomend_sistem.Infrastructure.Db
                 new Movie { Id = new Id(Guid.NewGuid()), Title = "Toy Story 3", Genre = "Animation", Rating = 8.3 },
                 new Movie { Id = new Id(Guid.NewGuid()), Title = "Finding Nemo", Genre = "Animation", Rating = 8.1 }
             );
+
+            // Генерация комбинаций пользователь-фильм
+           // GenerateUserMovieRatings(modelBuilder);
+        }
+
+        private void GenerateUserMovieRatings(ModelBuilder modelBuilder)
+        {
+            var movies = modelBuilder.Entity<Movie>().Metadata.GetSeedData().Cast<Movie>();
+
+            var users = modelBuilder.Entity<User>().Metadata.GetSeedData().Cast<User>();
+
+            var userMovieRatings = new List<UserMovieRating>();
+
+            foreach (var user in users)
+            {
+                foreach (var movie in movies)
+                {
+                    var randomRating = new Random().Next(1, 9); 
+
+                    userMovieRatings.Add(new UserMovieRating
+                    {
+                        Id = new Id(Guid.NewGuid()),
+                        UserId = user.Id,
+                        MovieId = movie.Id,
+                        Rating = randomRating
+                    });
+                }
+            }
+
+            modelBuilder.Entity<UserMovieRating>().HasData(userMovieRatings);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
